@@ -35,6 +35,12 @@ class Type:
         self.cd=1           # cooldown
     
     
+class Effect:
+    
+    def __init__(self):
+        self.type=None  # silence/reducedmg
+        
+    
 class Attack(Type): 
     
     def __init__(self, dmg=0, targets='all', cd=1):
@@ -78,6 +84,11 @@ class Debuff(Type):
         self.targets=targets
         self.cd=cd
         
+        
+class Silence(Effect):
+    
+    def __init__(self):
+        super().__init__()
         
 
 
