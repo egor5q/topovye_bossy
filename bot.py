@@ -72,8 +72,32 @@ def inline(call):
             name='оружие'
         for ids in spisok:
             item=ids()
-            kb.add(types.InlineKeyboardButton(text=item.name, callback_data='show '+item.data))
+            kb.add(types.InlineKeyboardButton(text=item.name, callback_data='show '+item.type+' '+item.data))
         medit('Выберите '+name+' для просмотра:', call.message.chat.id, call.message.message_id, reply_markup=kb)
+        
+    if 'show' in call.data:
+        medit('Выбрано: просмотр.', call.message.chat.id, call.message.message_id)
+        data=call.data.split(' ')
+        if data[1]=='tank':
+            spisok=tanks
+        if data[1]=='robot':
+            spisok=robots
+        if data[1]=='turret':
+            spisok=turrets
+        if data[1]=='weapon':
+            spisok=weapons
+        for ids in spisok:
+            if data[2]==ids().data:
+                item=ids
+        text=''
+        text+='Название: '+item.name+'\n'
+        text+='Тип: '+item.type+'\n'
+        bot.send_photo(call.message.chat.id, item.photo)
+        kb=types.InlineKeyboardMarkup()
+        kb.add(types.InlineKeyboardButton(text='Назад', callback_data='back'), types.InlineKeyboardButton(text='Собрать', callback_data='craft '+item.data))
+        bot.send_message(call.message.chat.id, text, reply_markup=kb)
+            
+        
             
     
         
