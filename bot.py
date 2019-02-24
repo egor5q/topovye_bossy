@@ -15,12 +15,42 @@ bot = telebot.TeleBot(token)
 
 
 client=MongoClient(os.environ['database'])
-db=client.
+db=client.futurewars
 users=db.users
 
-        
+@bot.message_handler(commands=['start'])
+def start(m):
+    tutorial=0
+    if m.from_user.id==m.chat.id:
+        if users.find_one({'id':m.from_user.id})==None:
+            users.insert_one(createuser(m.from_user))
+            tutorial=1
+        user=users.find_one({'id':m.from_user.id})
+        if tutorial==1:
+            bot.send_message(m.chat.id, 'Игра "FutureWars". Здесь ты будешь прокачивать свою армию, собирая роботов, турели и танки, и '+
+                             'нанимая солдат! Добывай руды, отбивайся от атак соперника и укрепляй свою военную базу!')
+            
+    
+@bot.message_handler(commands=['build'])
+def army(m):
+    buildmenu(m.from_user)
         
 
+def buildmenu(user, m=None):
+    text='Выберите категорию для сборки:'
+    kb=types.InlineKeyboardMarkup()
+    kb.add(types.InlineKeyboardButton(text='Роботы', callback_data='buildrobots'), types.InlineKeyboardButton(text='Танки', callback_data='buildtanks'))
+    kb.add(types.InlineKeyboardButton(text='Турели', callback_data='buildturrets'), types.InlineKeyboardButton(text='Оружие', callback_data='buildweapons'))
+    if m==None:
+        bot.send_message(user.id, text, reply_markup=kb)
+    else:
+        medit(text, m.chat.id, m.message_id, reply_markup=kb)
+       
+    
+    
+    
+    
+        
 def createuser(user):
     return {
         'id':user.id,
@@ -29,6 +59,7 @@ def createuser(user):
         'army':[],
         'weapons':[],
         'money':100,
+        'iron':100,
         'buildings':[]
     }
         
