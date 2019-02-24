@@ -51,14 +51,7 @@ def buildmenu(user, m=None):
         bot.send_message(user.id, text, reply_markup=kb)
     else:
         medit(text, m.chat.id, m.message_id, reply_markup=kb)
-        
-        
-@bot.message_handler(content_types=['photo'])
-def photo(m):
-    bot.send_message(441399484, m.chat.id)
-    print(m)  
-    
-        
+         
        
     
 @bot.callback_query_handler(func=lambda call:True)
