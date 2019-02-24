@@ -18,6 +18,12 @@ client=MongoClient(os.environ['database'])
 db=client.futurewars
 users=db.users
 
+tanks=['test']
+turrets=['test1']
+robots=['test2']
+weapons=['test3']
+
+
 @bot.message_handler(commands=['start'])
 def start(m):
     tutorial=0
@@ -45,10 +51,39 @@ def buildmenu(user, m=None):
         bot.send_message(user.id, text, reply_markup=kb)
     else:
         medit(text, m.chat.id, m.message_id, reply_markup=kb)
+        
+        
+@bot.message_handler(content_types=['photo'])
+def photo(m):
+    bot.send_message(441399484, m.chat.id)
+    print(m)  
+    
+        
        
     
-    
-    
+@bot.callback_query_handler(func=lambda call:True)
+def inline(call):
+    kb=types.InlineKeyboardMarkup()
+    if 'build' in call.data:
+        if 'robots' in call.data:
+            spisok=robots
+            name='робота'
+        elif 'tanks' in call.data:
+            spisok=tanks
+            'танк'
+        elif 'turrets' in call.data:
+            spisok=turrets
+            name='турель'
+        elif 'weapons' in call.data:
+            spisok=weapons
+            name='оружие'
+        for ids in spisok:
+            for idss in classes:
+                if idss().data==ids:
+                    item=idss()
+            kb.add(types.InlineKeyboardButton(text=item.name, callback_data='show '+item.data))
+        medit('Выберите '+name+' для просмотра:', call.message.chat.id, call.message.message_id, reply_markup=kb)
+            
     
         
 def createuser(user):
