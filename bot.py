@@ -18,10 +18,10 @@ client=MongoClient(os.environ['database'])
 db=client.futurewars
 users=db.users
 
-tanks=['test']
-turrets=['test1']
-robots=['test2']
-weapons=['test3']
+tanks=[unit_classes.Test]
+turrets=[unit_classes.Test1]
+robots=[unit_classes.Test2]
+weapons=[unit_classes.Test3]
 
 
 @bot.message_handler(commands=['start'])
@@ -71,9 +71,7 @@ def inline(call):
             spisok=weapons
             name='оружие'
         for ids in spisok:
-            for idss in classes:
-                if idss().data==ids:
-                    item=idss()
+            item=ids()
             kb.add(types.InlineKeyboardButton(text=item.name, callback_data='show '+item.data))
         medit('Выберите '+name+' для просмотра:', call.message.chat.id, call.message.message_id, reply_markup=kb)
             
