@@ -23,7 +23,12 @@ class Unit:
     
     def __init__(self):
         self.class=None  #tank/robot/human/turret
-
+        
+        
+class Weapon:
+    
+    def __init__(self):
+        pass
 
     
 class Tank(Unit):
