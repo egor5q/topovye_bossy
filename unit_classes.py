@@ -21,20 +21,20 @@ users=db.users
 class Unit:
     
     def __init__(self):
-        self.class=None  #tank/robot/human/turret
+        self.type=None  #tank/robot/human/turret
         
         
 class Weapon:
     
     def __init__(self):
-        pass
+        self.type='weapon'
 
     
 class Tank(Unit):
     
     def __init__(self):
         super().__init__()
-        self.class='tank'
+        self.type='tank'
 
         
         
@@ -42,7 +42,7 @@ class Robot(Unit):
     
     def __init__(self):
         super().__init__()
-        self.class='robot'
+        self.type='robot'
 
    
 
@@ -51,7 +51,7 @@ class Human(Unit):
     
     def __init__(self):
         super().__init__()
-        self.class='human'
+        self.type='human'
 
         
         
@@ -59,7 +59,7 @@ class Turret(Unit):
     
     def __init__(self):
         super().__init__()  
-        self.class='turret'
+        self.type='turret'
         
         
 class Test(Tank):
