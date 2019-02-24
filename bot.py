@@ -25,7 +25,11 @@ def createuser(user):
     return {
         'id':user.id,
         'name':user.first_name,
-        'username':user.username
+        'username':user.username,
+        'army':[],
+        'weapons':[],
+        'money':100,
+        'buildings':[]
     }
         
         
