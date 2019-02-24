@@ -22,12 +22,14 @@ class Unit:
     
     def __init__(self):
         self.type=None  #tank/robot/human/turret
+        self.shootspeed=[1, 1] # Сколько раз стреляет/Раз в сколько ходов (кд выстрела)
         
         
 class Weapon:
     
     def __init__(self):
         self.type='weapon'
+        self.shootspeed=[1, 1] # Сколько раз стреляет/Раз в сколько ходов (кд выстрела)
 
     
 class Tank(Unit):
@@ -68,6 +70,10 @@ class Test(Tank):
         super().__init__()
         self.data='test'
         self.name='танк'
+        self.damage=125
+        self.speed=400
+        self.cost=800
+        self.hp=950
         self.photo='AgADAgADIqsxG_S_mEtSXlaP3lYsFAlsUw8ABCshaU23n-1NiYwAAgI'
         
 class Test1(Robot):
