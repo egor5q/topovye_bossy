@@ -31,7 +31,7 @@ class Unit:
         self.dead=False
         self.skills=[]
         self.shootcd=0
-        self.photo='AgADAgAD0KoxG85oqEuj6f3E5jpHcBf-9A4ABEyPaiaRDjmUVzgFAAEC'
+        self.photo='AgADAgAD0KoxG85oqEthzqWUuXJ6Vxf-9A4ABEyPaiaRDjmUVzgFAAEC'
         self.id=units
         units+=1
         
@@ -75,7 +75,7 @@ class Weapon:
         self.shootspeed=[1, 3] # Сколько раз стреляет/Раз в сколько секунд (кд выстрела)
         self.cost=100
         self.damage=75
-        self.photo='AgADAgAD0KoxG85oqEuj6f3E5jpHcBf-9A4ABEyPaiaRDjmUVzgFAAEC'
+        self.photo='AgADAgAD0KoxG85oqEthzqWUuXJ6Vxf-9A4ABEyPaiaRDjmUVzgFAAEC'
 
     
 class Tank(Unit):
@@ -121,7 +121,7 @@ class Test(Tank):
         self.cost=800
         self.hp=950
         self.shootspeed=[1, 8]
-        self.photo='AgADAgADIqsxG_S_mEtSXlaP3lYsFAlsUw8ABCshaU23n-1NiYwAAgI'
+        self.photo='AgADAgADIqsxG_S_mEtRkoWePaa75wlsUw8ABHCr3Ea3e9ddiIwAAgI'
         
 class Test1(Robot):
     
@@ -130,7 +130,7 @@ class Test1(Robot):
         self.data='test1'
         self.name='робот'
         self.shootspeed=[1, 4]
-        self.photo='AgADAgADfqoxG8C9mUu53zMx4nEzjF52Uw8ABIgfsfgEkuMyWY4AAgI'
+        self.photo='AgADAgADfqoxG8C9mUs6XyzO_r4jDF52Uw8ABIgfsfgEkuMyWY4AAgI'
         
         
 class Test2(Turret):
@@ -140,7 +140,7 @@ class Test2(Turret):
         self.data='test2'
         self.name='турель'
         self.shootspeed=[3, 7]
-        self.photo='AgADAgADKasxG_S_mEvGKrGBKHqqj6t3Uw8ABEXfZPnwvpCIJo4AAgI'
+        self.photo='AgADAgADKasxG_S_mEtLwhNFUY9sAAGrd1MPAARF32T58L6QiCaOAAIC'
         
         
 class Test3(Weapon):
@@ -149,7 +149,7 @@ class Test3(Weapon):
         super().__init__()
         self.data='test3'
         self.name='оружие'
-        self.photo='AgADAgADKqsxG_S_mEurpfu42MBjZRSXOQ8ABCeg1E-5kdAMZ_MEAAEC'
+        self.photo='AgADAgADKqsxG_S_mEtKvjpgbffOQhSXOQ8ABCeg1E-5kdAMZ_MEAAEC'
 
         
 
