@@ -30,7 +30,7 @@ class Unit:
         self.dead=False
         self.skills=[]
         self.shootcd=0
-        self.photo='AgADAgAD0KoxG85oqEuj6f3E5jpHcBf-9A4ABEyPaiaRDjmUVzgFAAEC'4
+        self.photo='AgADAgAD0KoxG85oqEuj6f3E5jpHcBf-9A4ABEyPaiaRDjmUVzgFAAEC'
         
     def shoot(self, teams):
         enemyteams=[]
