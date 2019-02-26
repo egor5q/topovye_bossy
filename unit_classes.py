@@ -51,7 +51,7 @@ class Unit:
             if team[ids].dead==False:
                 enemies.append(team[ids])
         enemy=random.choice(enemies)
-        print('['+str(self.id)+']'+self.name+' стреляет в '+enemy.name+'!')
+        print('['+str(self.teamid)+']'+self.name+' стреляет в '+enemy.name+'!')
         x=0
         while x<self.shootspeed[0]:
             enemy.takeattack(self)
@@ -59,7 +59,7 @@ class Unit:
         
     def takeattack(self, enemy):
         self.hp-=enemy.damage
-        print('['+str(self.id)+']'+self.name+' получает '+str(enemy.damage)+' урона! Осталось '+str(self.hp)+' хп.')
+        print('['+str(self.teamid)+']'+self.name+' получает '+str(enemy.damage)+' урона! Осталось '+str(self.hp)+' хп.')
                 
         
         
