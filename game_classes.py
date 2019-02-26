@@ -58,5 +58,6 @@ class Game:
         
     def endgame(self, alive):
         del games[self.id]
+        print('Игра завершена!')
             
         
