@@ -38,7 +38,7 @@ class Unit:
     def shoot(self, teams):
         enemyteams=[]
         for ids in teams:
-            if self not in teams[ids]:
+            if self.teamid!=teams[ids].id:
                 alive=0
                 for idss in teams[ids]:
                     if teams[ids][idss].dead==False:
