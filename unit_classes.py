@@ -36,6 +36,9 @@ class Weapon:
     def __init__(self):
         self.type='weapon'
         self.shootspeed=[1, 1] # Сколько раз стреляет/Раз в сколько ходов (кд выстрела)
+        self.cost=100
+        self.damage=75
+        self.photo='AgADAgAD0KoxG85oqEuj6f3E5jpHcBf-9A4ABEyPaiaRDjmUVzgFAAEC'
 
     
 class Tank(Unit):
