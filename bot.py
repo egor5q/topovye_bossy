@@ -54,7 +54,6 @@ def start(m):
 def photo(m):
     if m.from_user.id==m.chat.id:
         bot.send_photo(441399484, m.photo[0].file_id, caption=str(m.photo[0].file_id))
-        print(m)  
             
             
 @bot.message_handler(commands=['testfight'])
