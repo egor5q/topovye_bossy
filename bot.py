@@ -119,8 +119,8 @@ def inline(call):
             text+='ХП: '+str(item.hp)+'\n'
             text+='Скорость: '+str(item.speed)+'\n'
             text+='Занимает места: '+str(item.size)+'\n'
-        text+='Цена (🔩): '+str(self.cost)+'\n'
-        text+='Урон: '+str(self.damage)+'\n'
+        text+='Цена (🔩): '+str(item.cost)+'\n'
+        text+='Урон: '+str(item.damage)+'\n'
         bot.send_photo(call.message.chat.id, item.photo)
         kb=types.InlineKeyboardMarkup()
         kb.add(types.InlineKeyboardButton(text='Назад', callback_data='back'), types.InlineKeyboardButton(text='Собрать', callback_data='craft '+item.data))
