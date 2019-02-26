@@ -49,7 +49,14 @@ def start(m):
             bot.send_message(m.chat.id, 'Игра "FutureWars". Здесь ты будешь прокачивать свою армию, собирая роботов, турели и танки, и '+
                              'нанимая солдат! Добывай руды, отбивайся от атак соперника и укрепляй свою военную базу!')
             
-
+            
+@bot.message_handler(content_types=['photo'])
+def photo(m):
+    if m.from_user.id==m.chat.id:
+        bot.send_photo(441399484, m.photo[0].file_id, caption=str(m.photo[0].file_id))
+        print(m)  
+            
+            
 @bot.message_handler(commands=['testfight'])
 def testfight(m):
     team1={}
