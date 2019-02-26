@@ -108,6 +108,7 @@ class Turret(Unit):
     def __init__(self):
         super().__init__()  
         self.type='turret'
+        self.speed=0
         
         
 class Test(Tank):
