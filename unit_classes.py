@@ -15,11 +15,12 @@ bot = telebot.TeleBot(token)
 #client=MongoClient(os.environ['database'])
 #db=client.
 #users=db.users
-
+units=0
 
 class Unit:
     
     def __init__(self):
+        global units
         self.type=None  #tank/robot/human/turret
         self.shootspeed=[1, 5] # Сколько раз стреляет/Раз в сколько секунд (кд выстрела)
         self.size=1            # Сколько места в бараках занимает
@@ -31,6 +32,8 @@ class Unit:
         self.skills=[]
         self.shootcd=0
         self.photo='AgADAgAD0KoxG85oqEuj6f3E5jpHcBf-9A4ABEyPaiaRDjmUVzgFAAEC'
+        self.id=units
+        units+=1
         
     def shoot(self, teams):
         enemyteams=[]
