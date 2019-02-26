@@ -43,8 +43,9 @@ def start(m):
     if m.from_user.id==m.chat.id:
         #if users.find_one({'id':m.from_user.id})==None:
         #    users.insert_one(createuser(m.from_user))
-             tutorial=1
+        #     tutorial=1
         #user=users.find_one({'id':m.from_user.id})
+        tutorial=1
         if tutorial==1:
             bot.send_message(m.chat.id, 'Игра "FutureWars". Здесь ты будешь прокачивать свою армию, собирая роботов, турели и танки, и '+
                              'нанимая солдат! Добывай руды, отбивайся от атак соперника и укрепляй свою военную базу!')
