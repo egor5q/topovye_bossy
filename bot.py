@@ -93,7 +93,7 @@ def inline(call):
             name='робота'
         elif 'tanks' in call.data:
             spisok=tanks
-            'танк'
+            name='танк'
         elif 'turrets' in call.data:
             spisok=turrets
             name='турель'
