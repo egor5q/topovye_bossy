@@ -29,7 +29,7 @@ class Game:
     def createteams(self, teams):
         x=0
         for ids in teams:
-            self.teams.update({x:teams[ids]})
+            self.teams.update({x:ids})
             x+=1
         
     def turn(self):
