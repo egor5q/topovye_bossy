@@ -30,6 +30,8 @@ class Game:
         x=0
         for ids in teams:
             self.teams.update({x:ids})
+            for idss in self.teams[x]: 
+                self.teams[x][idss].teamid=x
             x+=1
         
     def turn(self):
