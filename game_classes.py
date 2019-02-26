@@ -7,19 +7,29 @@ from telebot import types
 from pymongo import MongoClient
 import unit_classes
 
+allgames=0
 games={}
 
 
 class Game:
     
     def __init__(self):
+        global allgames
         self.teams={}
         self.second=0
         self.started=False
+        games.update({allgames:self})
+        allgames+=1
         
     def startgame(self):
         self.started=True
         self.turn()
+        
+    def createteams(self, teams):
+        x=0
+        for ids in teams:
+            self.teams.update({x:teams[ids]})
+            x+=1
         
     def turn(self):
         self.second+=1
