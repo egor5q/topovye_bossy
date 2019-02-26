@@ -18,6 +18,7 @@ class Game:
         self.teams={}
         self.second=0
         self.started=False
+        self.id=allgames
         games.update({allgames:self})
         allgames+=1
         
