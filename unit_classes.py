@@ -21,12 +21,13 @@ class Unit:
     
     def __init__(self):
         self.type=None  #tank/robot/human/turret
-        self.shootspeed=[1, 1] # Сколько раз стреляет/Раз в сколько ходов (кд выстрела)
+        self.shootspeed=[1, 4] # Сколько раз стреляет/Раз в сколько секунд (кд выстрела)
         self.size=1            # Сколько места в бараках занимает
         self.cost=400
         self.damage=150
         self.speed=100
         self.hp=500
+        self.skills=[]
         self.photo='AgADAgAD0KoxG85oqEuj6f3E5jpHcBf-9A4ABEyPaiaRDjmUVzgFAAEC'
         
         
@@ -34,7 +35,7 @@ class Weapon:
     
     def __init__(self):
         self.type='weapon'
-        self.shootspeed=[1, 1] # Сколько раз стреляет/Раз в сколько ходов (кд выстрела)
+        self.shootspeed=[1, 3] # Сколько раз стреляет/Раз в сколько секунд (кд выстрела)
         self.cost=100
         self.damage=75
         self.photo='AgADAgAD0KoxG85oqEuj6f3E5jpHcBf-9A4ABEyPaiaRDjmUVzgFAAEC'
