@@ -39,11 +39,17 @@ class Unit:
         enemyteams=[]
         for ids in teams:
             if self not in teams[ids]:
-                enemyteams.append(teams[ids])
+                alive=0
+                for idss in team[ids]:
+                    if team[ids][idss].dead==False:
+                        alive+=1
+                if alive>0:
+                    enemyteams.append(teams[ids])
         team=random.choice(enemyteams)
         enemies=[]
         for ids in team:
-            enemies.append(team[ids])
+            if team[ids].dead==False:
+                enemies.append(team[ids])
         enemy=random.choice(enemies)
         print(self.name+' стреляет в '+enemy.name+'!')
         x=0
