@@ -22,11 +22,41 @@ class Game:
         self.turn()
         
     def turn(self):
+        self.second+=1
         for ids in self.teams:
             team=self.teams[ids]
             for unit in team:
-                if team[unit].shootcd<=0:
-                    team[unit].shoot()
-                    team[unit].shootcd=team[unit].shootspeed[1]
+                team[unit].shootcd-=1
+                
+        for ids in self.teams:
+            team=self.teams[ids]
+            for unit in team:
+                if team[unit].dead==False:
+                    if team[unit].shootcd<=0:
+                        team[unit].shoot(self.teams)
+                        team[unit].shootcd=team[unit].shootspeed[1]
+                    
+        for ids in self.teams:
+            team=self.teams[ids]
+            for unit in team:
+                if unit.hp<=0:
+                    unit.dead=True
+        alive=[]
+        for ids in self.teams:
+            team=self.teams[ids]
+            dead=0
+            for unit in team:
+                if unit.dead==True:
+                    dead+=1
+            if dead!=len(team):
+                alive.append(team)
+        if len(alive)<=1:
+            self.endgame(alive)
+        else:
+            t=threading.Timer(1, self.turn)
+            t.start()
+        
+    def endgame(self, alive):
+        del games[self.id]
             
         
