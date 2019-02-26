@@ -51,16 +51,16 @@ def start(m):
 
 @bot.message_handler(commands=['testfight'])
 def testfight(m):
-    team1=[]
-    team2=[]
+    team1={}
+    team2={}
     for ids in classes:
         item=ids()
         if item.type!='weapon':
-            team1.append(item)
+            team1.update({item.id:item})
     for ids in classes:
         item=ids()
         if item.type!='weapon':
-            team2.append(item)
+            team2.update({item.id:item})
     teams=[team1, team2]
     game=game_classes.Game()
     game.createteams(teams)
