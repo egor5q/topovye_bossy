@@ -22,8 +22,8 @@ tanks=[unit_classes.Test]
 turrets=[unit_classes.Test1]
 robots=[unit_classes.Test2]
 weapons=[unit_classes.Test3]
-
 classes=[]
+
 for ids in tanks:
     classes.append(ids)
 for ids in turrets:
@@ -88,21 +88,19 @@ def inline(call):
     if 'show' in call.data:
         medit('Выбрано: просмотр.', call.message.chat.id, call.message.message_id)
         data=call.data.split(' ')
-        if data[1]=='tank':
-            spisok=tanks
-        if data[1]=='robot':
-            spisok=robots
-        if data[1]=='turret':
-            spisok=turrets
-        if data[1]=='weapon':
-            spisok=weapons
+        spisok=classes
         for ids in spisok:
             if data[2]==ids().data:
-                item=ids
+                item=ids()
         text=''
         text+='Название: '+item.name+'\n'
         text+='Тип: '+item.type+'\n'
-        text+='ХП: '+str(item.hp)+'\n'
+        if item.type!='weapon':
+            text+='ХП: '+str(item.hp)+'\n'
+            text+='Скорость: '+str(item.speed)+'\n'
+            text+='Занимает места: '+str(item.size)+'\n'
+        text+='Цена (🔩): '+str(self.cost)+'\n'
+        text+='Урон: '+str(self.damage)+'\n'
         bot.send_photo(call.message.chat.id, item.photo)
         kb=types.InlineKeyboardMarkup()
         kb.add(types.InlineKeyboardButton(text='Назад', callback_data='back'), types.InlineKeyboardButton(text='Собрать', callback_data='craft '+item.data))
