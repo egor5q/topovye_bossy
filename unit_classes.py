@@ -40,8 +40,8 @@ class Unit:
         for ids in teams:
             if self not in teams[ids]:
                 alive=0
-                for idss in team[ids]:
-                    if team[ids][idss].dead==False:
+                for idss in teams[ids]:
+                    if teams[ids][idss].dead==False:
                         alive+=1
                 if alive>0:
                     enemyteams.append(teams[ids])
