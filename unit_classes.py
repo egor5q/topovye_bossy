@@ -21,7 +21,7 @@ class Unit:
     
     def __init__(self):
         self.type=None  #tank/robot/human/turret
-        self.shootspeed=[1, 4] # Сколько раз стреляет/Раз в сколько секунд (кд выстрела)
+        self.shootspeed=[1, 5] # Сколько раз стреляет/Раз в сколько секунд (кд выстрела)
         self.size=1            # Сколько места в бараках занимает
         self.cost=400
         self.damage=150
@@ -42,6 +42,7 @@ class Unit:
         for ids in team:
             enemies.append(team[ids])
         enemy=random.choice(enemies)
+        print(self.name+' стреляет в '+enemy.name+'!')
         x=0
         while x<self.shootspeed[0]:
             enemy.takeattack(self)
@@ -49,6 +50,7 @@ class Unit:
         
     def takeattack(self, enemy):
         self.hp-=ememy.damage
+        print(self.name+' получает '+str(enemy.damage)+' урона! Осталось '+str(self.hp)+' хп.')
                 
         
         
@@ -104,6 +106,7 @@ class Test(Tank):
         self.speed=400
         self.cost=800
         self.hp=950
+        self.shootspeed=[1, 8]
         self.photo='AgADAgADIqsxG_S_mEtSXlaP3lYsFAlsUw8ABCshaU23n-1NiYwAAgI'
         
 class Test1(Robot):
@@ -112,6 +115,7 @@ class Test1(Robot):
         super().__init__()
         self.data='test1'
         self.name='робот'
+        self.shootspeed=[1, 4]
         self.photo='AgADAgADfqoxG8C9mUu53zMx4nEzjF52Uw8ABIgfsfgEkuMyWY4AAgI'
         
         
@@ -121,6 +125,7 @@ class Test2(Turret):
         super().__init__()
         self.data='test2'
         self.name='турель'
+        self.shootspeed=[3, 7]
         self.photo='AgADAgADKasxG_S_mEvGKrGBKHqqj6t3Uw8ABEXfZPnwvpCIJo4AAgI'
         
         
