@@ -27,6 +27,7 @@ class Unit:
         self.damage=150
         self.speed=100
         self.hp=500
+        self.dead=False
         self.skills=[]
         self.shootcd=0
         self.photo='AgADAgAD0KoxG85oqEuj6f3E5jpHcBf-9A4ABEyPaiaRDjmUVzgFAAEC'4
