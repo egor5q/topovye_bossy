@@ -63,6 +63,7 @@ def testfight(m):
             team2.append(item)
     teams=[team1, team2]
     game=game_classes.Game()
+    game.createteams(teams)
     game.startgame()
             
 @bot.message_handler(commands=['build'])
