@@ -28,7 +28,27 @@ class Unit:
         self.speed=100
         self.hp=500
         self.skills=[]
-        self.photo='AgADAgAD0KoxG85oqEuj6f3E5jpHcBf-9A4ABEyPaiaRDjmUVzgFAAEC'
+        self.shootcd=0
+        self.photo='AgADAgAD0KoxG85oqEuj6f3E5jpHcBf-9A4ABEyPaiaRDjmUVzgFAAEC'4
+        
+    def shoot(self, teams):
+        enemyteams=[]
+        for ids in teams:
+            if self not in teams[ids]:
+                enemyteams.append(teams[ids])
+        team=random.choice(enemyteams)
+        enemies=[]
+        for ids in team:
+            enemies.append(team[ids])
+        enemy=random.choice(enemies)
+        x=0
+        while x<self.shootspeed[0]:
+            enemy.takeattack(self)
+            x+=1
+        
+    def takeattack(self, enemy):
+        self.hp-=ememy.damage
+                
         
         
 class Weapon:
