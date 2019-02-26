@@ -33,6 +33,10 @@ class Game:
             for idss in self.teams[x]: 
                 self.teams[x][idss].teamid=x
             x+=1
+        for ids in teams:
+            for idss in self.teams[ids]:
+                unit=self.teams[ids][idss]
+                print('Участник ['+str(unit.teamid)+']'+unit.name)
         
     def turn(self):
         self.second+=1
