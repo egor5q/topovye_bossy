@@ -8,19 +8,21 @@ from emoji import emojize
 from telebot import types
 from pymongo import MongoClient
 import unit_classes
+import game_classes
 
 
 token = os.environ['TELEGRAM_TOKEN']
 bot = telebot.TeleBot(token)
 
 
-client=MongoClient(os.environ['database'])
-db=client.futurewars
-users=db.users
+#client=MongoClient(os.environ['database'])
+#db=client.futurewars
+#users=db.users
 
 tanks=[unit_classes.Test]
 turrets=[unit_classes.Test1]
 robots=[unit_classes.Test2]
+
 weapons=[unit_classes.Test3]
 classes=[]
 
@@ -46,7 +48,23 @@ def start(m):
             bot.send_message(m.chat.id, 'Игра "FutureWars". Здесь ты будешь прокачивать свою армию, собирая роботов, турели и танки, и '+
                              'нанимая солдат! Добывай руды, отбивайся от атак соперника и укрепляй свою военную базу!')
             
-    
+
+@bot.message_handler(commands=['testfight'])
+def testfight(m):
+    team1=[]
+    team2=[]
+    for ids in classes:
+        item=ids()
+        if item.type!='weapon':
+            team1.append(item)
+    for ids in classes:
+        item=ids()
+        if item.type!='weapon':
+            team2.append(item)
+    teams=[team1, team2]
+    game=game_classes.Game()
+    game.startgame()
+            
 @bot.message_handler(commands=['build'])
 def army(m):
     buildmenu(m.from_user)
