@@ -52,7 +52,7 @@ class Unit:
             x+=1
         
     def takeattack(self, enemy):
-        self.hp-=ememy.damage
+        self.hp-=enemy.damage
         print(self.name+' получает '+str(enemy.damage)+' урона! Осталось '+str(self.hp)+' хп.')
                 
         
