@@ -23,6 +23,16 @@ turrets=[unit_classes.Test1]
 robots=[unit_classes.Test2]
 weapons=[unit_classes.Test3]
 
+classes=[]
+for ids in tanks:
+    classes.append(ids)
+for ids in turrets:
+    classes.append(ids)
+for ids in robots:
+    classes.append(ids)
+for ids in weapons:
+    classes.append(ids)
+
 
 @bot.message_handler(commands=['start'])
 def start(m):
@@ -92,6 +102,7 @@ def inline(call):
         text=''
         text+='Название: '+item.name+'\n'
         text+='Тип: '+item.type+'\n'
+        text+='ХП: '+str(item.hp)+'\n'
         bot.send_photo(call.message.chat.id, item.photo)
         kb=types.InlineKeyboardMarkup()
         kb.add(types.InlineKeyboardButton(text='Назад', callback_data='back'), types.InlineKeyboardButton(text='Собрать', callback_data='craft '+item.data))
@@ -110,7 +121,8 @@ def createuser(user):
         'weapons':[],
         'money':100,
         'iron':100,
-        'buildings':[]
+        'buildings':[],
+        'barracks':20
     }
         
         
