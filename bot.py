@@ -21,8 +21,8 @@ bot = telebot.TeleBot(token)
 #users=db.users
 
 tanks=[unit_classes.Test]
-turrets=[unit_classes.Test1]
-robots=[unit_classes.Test2]
+turrets=[unit_classes.Test2]
+robots=[unit_classes.Test1]
 
 weapons=[unit_classes.Test3]
 classes=[]
