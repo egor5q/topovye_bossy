@@ -50,14 +50,14 @@ class Game:
         for ids in self.teams:
             team=self.teams[ids]
             for unit in team:
-                if unit.hp<=0:
-                    unit.dead=True
+                if team[unit].hp<=0:
+                    team[unit].dead=True
         alive=[]
         for ids in self.teams:
             team=self.teams[ids]
             dead=0
             for unit in team:
-                if unit.dead==True:
+                if team[unit].dead==True:
                     dead+=1
             if dead!=len(team):
                 alive.append(team)
