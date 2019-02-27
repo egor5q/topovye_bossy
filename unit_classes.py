@@ -69,6 +69,7 @@ class Unit:
             x+=1
             sumdmg+=dmg
         text='['+str(enemy.teamid)+']'+enemy.name+' получает '+str(sumdmg)+' урона! Осталось '+str(enemy.hp)+' хп.'
+        bot.send_message(441399484, text)
         
     def takeattack(self, enemy):
         dmg=enemy.damage
