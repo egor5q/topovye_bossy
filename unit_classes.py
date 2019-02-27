@@ -117,10 +117,10 @@ class Test(Tank):
         super().__init__()
         self.data='test'
         self.name='танк'
-        self.damage=125
+        self.damage=175
         self.speed=400
         self.cost=800
-        self.hp=950
+        self.hp=1150
         self.shootspeed=[1, 8]
         self.photo='AgADAgADIqsxG_S_mEtRkoWePaa75wlsUw8ABHCr3Ea3e9ddiIwAAgI'
         
@@ -130,6 +130,8 @@ class Test1(Robot):
         super().__init__()
         self.data='test1'
         self.name='робот'
+        self.damage=100
+        self.hp=650
         self.shootspeed=[1, 4]
         self.photo='AgADAgADfqoxG8C9mUs6XyzO_r4jDF52Uw8ABIgfsfgEkuMyWY4AAgI'
         
@@ -141,6 +143,8 @@ class Test2(Turret):
         self.data='test2'
         self.name='турель'
         self.shootspeed=[3, 7]
+        self.hp=400
+        self.damage=125
         self.photo='AgADAgADKasxG_S_mEtLwhNFUY9sAAGrd1MPAARF32T58L6QiCaOAAIC'
         
         
