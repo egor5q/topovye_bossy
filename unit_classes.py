@@ -56,19 +56,24 @@ class Unit:
             if team[ids].dead==False:
                 enemies.append(team[ids])
         enemy=random.choice(enemies)
-        text='['+str(self.teamid)+']'+self.name+' стреляет в '+enemy.name+'!'
+        if self.shootspeed[0]==1:
+            text='['+str(self.teamid)+']'+self.name+' стреляет в '+enemy.name+'!'
+        else:
+            text='['+str(self.teamid)+']'+self.name+' делает серию выстрелов по '+enemy.name+'!'
         print(text)
         bot.send_message(441399484, text)
         x=0
+        sumdmg=0
         while x<self.shootspeed[0]:
-            enemy.takeattack(self)
+            dmg=enemy.takeattack(self)
             x+=1
+            sumdmg+=dmg
+        text='['+str(enemy.teamid)+']'+enemy.name+' получает '+str(sumdmg)+' урона! Осталось '+str(enemy.hp)+' хп.'
         
     def takeattack(self, enemy):
-        self.hp-=enemy.damage
-        text='['+str(self.teamid)+']'+self.name+' получает '+str(enemy.damage)+' урона! Осталось '+str(self.hp)+' хп.'
-        print(text)
-        bot.send_message(441399484, text)
+        dmg=enemy.damage
+        self.hp-=dmg
+        return dmg
                 
         
         
