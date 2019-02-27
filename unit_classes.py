@@ -56,7 +56,9 @@ class Unit:
             if team[ids].dead==False:
                 enemies.append(team[ids])
         enemy=random.choice(enemies)
-        print('['+str(self.teamid)+']'+self.name+' стреляет в '+enemy.name+'!')
+        text='['+str(self.teamid)+']'+self.name+' стреляет в '+enemy.name+'!'
+        print(text)
+        bot.send_message(441399484, text)
         x=0
         while x<self.shootspeed[0]:
             enemy.takeattack(self)
@@ -64,7 +66,9 @@ class Unit:
         
     def takeattack(self, enemy):
         self.hp-=enemy.damage
-        print('['+str(self.teamid)+']'+self.name+' получает '+str(enemy.damage)+' урона! Осталось '+str(self.hp)+' хп.')
+        text='['+str(self.teamid)+']'+self.name+' получает '+str(enemy.damage)+' урона! Осталось '+str(self.hp)+' хп.'
+        print(text)
+        bot.send_message(441399484, text)
                 
         
         
@@ -121,7 +125,7 @@ class Test(Tank):
         self.speed=400
         self.cost=800
         self.hp=1150
-        self.shootspeed=[1, 8]
+        self.shootspeed=[1, 10]
         self.photo='AgADAgADIqsxG_S_mEtRkoWePaa75wlsUw8ABHCr3Ea3e9ddiIwAAgI'
         
 class Test1(Robot):
@@ -132,7 +136,7 @@ class Test1(Robot):
         self.name='робот'
         self.damage=100
         self.hp=650
-        self.shootspeed=[1, 4]
+        self.shootspeed=[1, 6]
         self.photo='AgADAgADfqoxG8C9mUs6XyzO_r4jDF52Uw8ABIgfsfgEkuMyWY4AAgI'
         
         
@@ -142,7 +146,7 @@ class Test2(Turret):
         super().__init__()
         self.data='test2'
         self.name='турель'
-        self.shootspeed=[3, 7]
+        self.shootspeed=[3, 9]
         self.hp=400
         self.damage=125
         self.photo='AgADAgADKasxG_S_mEtLwhNFUY9sAAGrd1MPAARF32T58L6QiCaOAAIC'
