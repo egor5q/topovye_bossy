@@ -88,10 +88,17 @@ def buildmenu(user, m=None):
     else:
         medit(text, m.chat.id, m.message_id, reply_markup=kb)
          
-       
+@bot.message_handler(commands=['duel'])
+def duel(m):
+    kb=types.InlineKeyboardMarkup()
+    kb.add(types.InlineKeyboardButton(text='Вступить в бой', callback_data='battle join'))
+    bot.send_message(m.chat.id, 'Набор игроков на дуэль!', reply_markup=kb)
+
+
     
 @bot.callback_query_handler(func=lambda call:True)
 def inline(call):
+    user=users.find_one({'id':call.from_user.id})
     kb=types.InlineKeyboardMarkup()
     if 'build' in call.data:
         if 'robots' in call.data:
@@ -140,11 +147,20 @@ def inline(call):
                 item=ids()
         if item!=None:
             cost=item.cost
-            user=users.find_one({'id':call.from_user.id})
+            size=item.size
+            myarmy=0
+            for ids in user['army']:
+                for idss in classes:
+                    if idss.data==ids.data:
+                        x=idss()
+                myarmy+=x.size
             if user['iron']>=cost:
-                users.update_one({'id':user['id']},{'$inc':{'iron':-cost}})
-                users.update_one({'id':user['id']},{'$push':{'army':item.data}})
-                medit('Механизм "'+item.name+'" успешно собран!', call.message.chat.id, call.message.message_id, reply_markup=kb)
+                if myarmy+item.size<=user['barracks']:
+                    users.update_one({'id':user['id']},{'$inc':{'iron':-cost}})
+                    users.update_one({'id':user['id']},{'$push':{'army':item.data}})
+                    medit('Механизм "'+item.name+'" успешно собран!', call.message.chat.id, call.message.message_id, reply_markup=kb)
+                else:
+                    bot.answer_callback_query(call.id, 'Недостаточно места в бараках!')
             else:
                 bot.answer_callback_query(call.id, 'Недостаточно железа!')
             
