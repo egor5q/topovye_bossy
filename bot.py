@@ -16,9 +16,9 @@ token = os.environ['TELEGRAM_TOKEN']
 bot = telebot.TeleBot(token)
 
 
-#client=MongoClient(os.environ['database'])
-#db=client.futurewars
-#users=db.users
+client=MongoClient(os.environ['database'])
+db=client.futurewars
+users=db.users
 
 tanks=[unit_classes.Test]
 turrets=[unit_classes.Test2]
@@ -132,6 +132,20 @@ def inline(call):
         kb=types.InlineKeyboardMarkup()
         kb.add(types.InlineKeyboardButton(text='Назад', callback_data='back'), types.InlineKeyboardButton(text='Собрать', callback_data='craft '+item.data))
         bot.send_message(call.message.chat.id, text, reply_markup=kb)
+        
+    if 'craft' in call.data:
+        data=call.data.split(' ')[1]
+        item=None
+        for ids in classes:
+            if ids().data==data:
+                item=ids()
+        if item!=None:
+            cost=item.cost
+            user=users.find_one({'id':m.from_user.id})
+            if user['iron']>=cost:
+                pass #craft
+            else:
+                bot.answer_callback_query(call.id, 'Недостаточно железа!')
             
         
             
