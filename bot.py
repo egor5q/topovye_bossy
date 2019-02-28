@@ -20,9 +20,9 @@ client=MongoClient(os.environ['database'])
 db=client.futurewars
 users=db.users
 
-tanks=[unit_classes.Test]
-turrets=[unit_classes.Test2]
-robots=[unit_classes.Test1]
+tanks=[unit_classes.Breaker]
+turrets=[unit_classes.Multigun]
+robots=[unit_classes.Lazerbot]
 
 weapons=[unit_classes.Test3]
 classes=[]
