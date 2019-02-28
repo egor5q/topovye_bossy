@@ -143,7 +143,7 @@ def inline(call):
             user=users.find_one({'id':call.from_user.id})
             if user['iron']>=cost:
                 users.update_one({'id':user['id']},{'$inc':{'iron':-cost}})
-                users.update_one({'id':user['id']},{'$push':{'army':item}})
+                users.update_one({'id':user['id']},{'$push':{'army':item.data}})
                 medit('Механизм "'+item.name+'" успешно собран!', call.message.chat.id, call.message.message_id, reply_markup=kb)
             else:
                 bot.answer_callback_query(call.id, 'Недостаточно железа!')
