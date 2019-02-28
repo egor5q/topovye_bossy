@@ -140,7 +140,7 @@ def inline(call):
                 item=ids()
         if item!=None:
             cost=item.cost
-            user=users.find_one({'id':m.from_user.id})
+            user=users.find_one({'id':call.from_user.id})
             if user['iron']>=cost:
                 users.update_one({'id':user['id']},{'$inc':{'iron':-cost}})
                 users.update_one({'id':user['id']},{'$push':{'army':item}})
