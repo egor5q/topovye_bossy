@@ -121,12 +121,12 @@ class Turret(Unit):
         self.speed=0
         
         
-class Test(Tank):
+class Breaker(Tank):
     
     def __init__(self):
         super().__init__()
-        self.data='test'
-        self.name='танк'
+        self.data='breaker'
+        self.name='Крушитель'
         self.damage=175
         self.speed=400
         self.cost=800
@@ -134,27 +134,27 @@ class Test(Tank):
         self.shootspeed=[1, 10]
         self.photo='AgADAgADIqsxG_S_mEtRkoWePaa75wlsUw8ABHCr3Ea3e9ddiIwAAgI'
         
-class Test1(Robot):
+class Lazerbot(Robot):
     
     def __init__(self):
         super().__init__()
-        self.data='test1'
-        self.name='робот'
+        self.data='lazerbot'
+        self.name='Лазербот-1150'
         self.damage=100
         self.hp=650
         self.shootspeed=[1, 6]
         self.photo='AgADAgADfqoxG8C9mUs6XyzO_r4jDF52Uw8ABIgfsfgEkuMyWY4AAgI'
         
         
-class Test2(Turret):
+class Multigun(Turret):
     
     def __init__(self):
         super().__init__()
-        self.data='test2'
-        self.name='турель'
+        self.data='multigun'
+        self.name='Multigun V-5'
         self.shootspeed=[3, 9]
         self.hp=400
-        self.damage=125
+        self.damage=75
         self.photo='AgADAgADKasxG_S_mEtLwhNFUY9sAAGrd1MPAARF32T58L6QiCaOAAIC'
         
         
