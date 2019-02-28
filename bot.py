@@ -41,11 +41,10 @@ for ids in weapons:
 def start(m):
     tutorial=0
     if m.from_user.id==m.chat.id:
-        #if users.find_one({'id':m.from_user.id})==None:
-        #    users.insert_one(createuser(m.from_user))
-        #     tutorial=1
-        #user=users.find_one({'id':m.from_user.id})
-        tutorial=1
+        if users.find_one({'id':m.from_user.id})==None:
+            users.insert_one(createuser(m.from_user))
+            tutorial=1
+        user=users.find_one({'id':m.from_user.id})
         if tutorial==1:
             bot.send_message(m.chat.id, 'Игра "FutureWars". Здесь ты будешь прокачивать свою армию, собирая роботов, турели и танки, и '+
                              'нанимая солдат! Добывай руды, отбивайся от атак соперника и укрепляй свою военную базу!')
@@ -159,7 +158,7 @@ def createuser(user):
         'army':[],
         'weapons':[],
         'money':100,
-        'iron':100,
+        'iron':400,
         'buildings':[],
         'barracks':20
     }
