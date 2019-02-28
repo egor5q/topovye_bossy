@@ -33,6 +33,7 @@ class Unit:
         self.shootcd=0
         self.photo='AgADAgAD0KoxG85oqEthzqWUuXJ6Vxf-9A4ABEyPaiaRDjmUVzgFAAEC'
         self.id=units
+        self.ownerid=None
         units+=1
         
     def shoot(self, teams):
