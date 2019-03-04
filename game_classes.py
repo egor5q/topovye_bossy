@@ -17,6 +17,7 @@ class Game:
         global allgames
         self.teams={}
         self.second=0
+        self.users=[]
         self.started=False
         self.id=allgames
         games.update({allgames:self})
@@ -26,7 +27,7 @@ class Game:
         self.started=True
         self.turn()
         
-    def createteams(self, teams):
+    def createteams(self, teams, users):
         x=0
         for ids in teams:
             self.teams.update({x:ids})
@@ -37,6 +38,7 @@ class Game:
             for idss in self.teams[ids]:
                 unit=self.teams[ids][idss]
                 print('Участник ['+str(unit.teamid)+']'+unit.name)
+        self.users=users
         
     def turn(self):
         self.second+=1
