@@ -70,12 +70,21 @@ def testfight(m):
             team2.update({item.id:item})
     teams=[team1, team2]
     game=game_classes.Game()
-    game.createteams(teams)
+    users=[]
+    users.append(createplayer(441399484))
+    game.createteams(teams, users)
     game.startgame()
             
 @bot.message_handler(commands=['build'])
 def army(m):
     buildmenu(m.from_user)
+      
+def createplayer(id):
+    return{
+        'id':id,
+        'message':None,
+        'sendresults':False
+    }
         
 
 def buildmenu(user, m=None):
