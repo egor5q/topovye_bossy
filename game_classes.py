@@ -40,6 +40,11 @@ class Game:
         
     def turn(self):
         self.second+=1
+        if self.second%5==0:
+            users=[]
+            for ids in self.players:
+                if ids.sendresult!=False and ids.message!=None:
+                    pass # medit(результаты хп)
         for ids in self.teams:
             team=self.teams[ids]
             for unit in team:
