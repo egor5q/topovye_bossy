@@ -62,7 +62,6 @@ class Unit:
         else:
             text='['+str(self.teamid)+']'+self.name+' делает серию выстрелов по '+enemy.name+'!'
         print(text)
-        bot.send_message(441399484, text)
         x=0
         sumdmg=0
         while x<self.shootspeed[0]:
@@ -70,7 +69,6 @@ class Unit:
             x+=1
             sumdmg+=dmg
         text='['+str(enemy.teamid)+']'+enemy.name+' получает '+str(sumdmg)+' урона! Осталось '+str(enemy.hp)+' хп.'
-        bot.send_message(441399484, text)
         
     def takeattack(self, enemy):
         dmg=enemy.damage
