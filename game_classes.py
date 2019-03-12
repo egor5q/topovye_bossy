@@ -54,7 +54,7 @@ class Game:
         
     def turn(self):
         self.second+=1
-        if self.second%4==0:
+        if self.second%1==0:
             users=[]
             for ids in self.teams:
                 user=self.teams[ids]['player']
