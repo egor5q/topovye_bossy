@@ -28,6 +28,7 @@ class Unit:
         self.damage=150
         self.speed=100
         self.hp=500
+        self.maxhp=self.hp
         self.dead=False
         self.skills=[]
         self.shootcd=0
@@ -130,6 +131,7 @@ class Breaker(Tank):
         self.speed=400
         self.cost=800
         self.hp=1150
+        self.maxhp=self.hp
         self.shootspeed=[1, 10]
         self.photo='AgADAgADIqsxG_S_mEtRkoWePaa75wlsUw8ABHCr3Ea3e9ddiIwAAgI'
         
@@ -141,6 +143,7 @@ class Lazerbot(Robot):
         self.name='Лазербот-1150'
         self.damage=100
         self.hp=650
+        self.maxhp=self.hp
         self.shootspeed=[1, 6]
         self.photo='AgADAgADfqoxG8C9mUs6XyzO_r4jDF52Uw8ABIgfsfgEkuMyWY4AAgI'
         
@@ -153,6 +156,7 @@ class Multigun(Turret):
         self.name='Multigun V-5'
         self.shootspeed=[3, 9]
         self.hp=400
+        self.maxhp=self.hp
         self.damage=75
         self.photo='AgADAgADKasxG_S_mEtLwhNFUY9sAAGrd1MPAARF32T58L6QiCaOAAIC'
         
