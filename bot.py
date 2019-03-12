@@ -168,7 +168,7 @@ def inline(call):
             myarmy=0
             for ids in user['army']:
                 for idss in classes:
-                    if idss.data==ids.data:
+                    if idss().data==ids:
                         x=idss()
                 myarmy+=x.size
             if user['iron']>=cost:
