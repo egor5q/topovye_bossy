@@ -69,13 +69,13 @@ def addteams(players):
     for ids in classes:
         item=ids()
         if item.type!='weapon':
-            team1.army.update({item.id:item})
-    team1.update({'player':createplayer(441399484)})
+            team1['army'].update({item.id:item})
+    team1.update({'player':createplayer(players[0])})
     for ids in classes:
         item=ids()
         if item.type!='weapon':
-            team2.army.update({item.id:item})
-    team2.update(createplayer(None))
+            team2['army'].update({item.id:item})
+    team2.update(createplayer(players[1]))
     teams=[team1, team2]
     game=game_classes.Game()
     users=[]
