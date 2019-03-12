@@ -27,7 +27,7 @@ class Game:
         self.started=True
         for ids in self.teams:
             user=self.teams[ids]['player']
-            if user['sendresult']!=False and user['id']!=None:
+            if user['sendresults']!=False and user['id']!=None:
                 msg=bot.send_message(user['id'], 'Здесь будут отображаться результаты текущего боя.')
                 user['message']=msg
         self.turn()
