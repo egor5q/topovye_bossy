@@ -70,7 +70,7 @@ class Game:
                             x='enemy'
                         for z in team['army']:
                             unit=team['army'][z]
-                            hp=round((unit['hp']/unit['maxhp'])*100, 1)
+                            hp=round((unit.hp/unit.maxhp)*100, 1)
                             if x=='enemy':
                                 emoj='🔴'
                                 enemys+=emoj+'|'+unit.name+': ♥️'+str(hp)+'%\n'
