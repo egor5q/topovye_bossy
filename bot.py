@@ -58,23 +58,31 @@ def photo(m):
             
 @bot.message_handler(commands=['testfight'])
 def testfight(m):
-    team1={}
-    team2={}
+    player1=441399484
+    player2=22
+    players=[player1, player2]
+    addteams(players)
+        
+def addteams(players):
+    team1={'army':{}}
+    team2={'army':{}}
     for ids in classes:
         item=ids()
         if item.type!='weapon':
-            team1.update({item.id:item})
+            team1.army.update({item.id:item})
+    team1.update({'player':441399484})
     for ids in classes:
         item=ids()
         if item.type!='weapon':
-            team2.update({item.id:item})
+            team2.army.update({item.id:item})
+    team2.update({'player':None})
     teams=[team1, team2]
     game=game_classes.Game()
     users=[]
-    users.append(createplayer(441399484))
-    game.createteams(teams, users)
+    game.createteams(teams)
     game.startgame()
-            
+        
+        
 @bot.message_handler(commands=['build'])
 def army(m):
     buildmenu(m.from_user)
