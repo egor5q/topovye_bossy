@@ -91,7 +91,7 @@ class Game:
                 if team['army'][unit].dead==False:
                     if team['army'][unit].shootcd<=0:
                         team['army'][unit].shoot(self.teams)
-                        team['army'][unit].shootcd=team[unit].shootspeed[1]
+                        team['army'][unit].shootcd=team['army'][unit].shootspeed[1]
                     
         for ids in self.teams:
             team=self.teams[ids]
