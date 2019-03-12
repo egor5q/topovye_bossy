@@ -63,7 +63,7 @@ class Game:
                     enemys=''
                     allies=''
                     for idss in self.teams:
-                        team=self.teams[ids]
+                        team=self.teams[idss]
                         if team['player']['id']==user['id']:
                             x='ally'
                         else:
@@ -77,7 +77,7 @@ class Game:
                             else:
                                 emoj='🔵'
                                 allies+=emoj+'|'+unit.name+': ♥️'+str(hp)+'%\n'
-                medit('Ситуация на поле боя:\n\nСоюзники:\n'+allies+'\nСоперники:\n'+enemys, user['message'].chat.id, user['message'].message_id)
+                    medit('Ситуация на поле боя:\n\nСоюзники:\n'+allies+'\nСоперники:\n'+enemys, user['message'].chat.id, user['message'].message_id)
                             
                             
                         
