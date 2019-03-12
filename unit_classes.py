@@ -55,7 +55,7 @@ class Unit:
         enemies=[]
         for ids in team['army']:
             if team['army'][ids].dead==False:
-                enemies.append(team[ids])
+                enemies.append(team['army'][ids])
         enemy=random.choice(enemies)
         if self.shootspeed[0]==1:
             text='['+str(self.teamid)+']'+self.name+' стреляет в '+enemy.name+'!'
