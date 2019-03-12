@@ -68,7 +68,8 @@ class Game:
                             x='ally'
                         else:
                             x='enemy'
-                        for unit in team['army']:
+                        for z in team['army']:
+                            unit=team['army'][z]
                             hp=round((unit['hp']/unit['maxhp'])*100, 1)
                             if x=='enemy':
                                 emoj='🔴'
