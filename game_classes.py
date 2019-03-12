@@ -32,8 +32,11 @@ class Game:
         for ids in self.teams:
             user=self.teams[ids]['player']
             if user['sendresults']!=False and user['id']!=None:
-                msg=bot.send_message(user['id'], 'Здесь будут отображаться результаты текущего боя.')
-                user['message']=msg
+                try:
+                    msg=bot.send_message(user['id'], 'Здесь будут отображаться результаты текущего боя.')
+                    user['message']=msg
+                except:
+                    pass
         self.turn()
         
     def createteams(self, teams):
