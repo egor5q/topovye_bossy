@@ -40,21 +40,21 @@ class Unit:
         enemyteams=[]
         for ids in teams:
             myteam=False
-            for idss in teams[ids]:
-                unit=teams[ids][idss]
+            for idss in teams[ids]['army']:
+                unit=teams[ids]['army'][idss]
                 if self.id==unit.id:
                     myteam=True
             if myteam==False:
                 alive=0
-                for idss in teams[ids]:
-                    if teams[ids][idss].dead==False:
+                for idss in teams[ids]['army']:
+                    if teams[ids]['army'][idss].dead==False:
                         alive+=1
                 if alive>0:
                     enemyteams.append(teams[ids])
         team=random.choice(enemyteams)
         enemies=[]
-        for ids in team:
-            if team[ids].dead==False:
+        for ids in team['army']:
+            if team['army'][ids].dead==False:
                 enemies.append(team[ids])
         enemy=random.choice(enemies)
         if self.shootspeed[0]==1:
