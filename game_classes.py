@@ -120,8 +120,10 @@ class Game:
         for ids in self.teams:
             win='проиграли'
             for idss in alive:
-                if alive[idss]['player']['id']==self.teams[ids]['player']['id']:
+                if idss['player']['id']==self.teams[ids]['player']['id']:
                     win='выиграли'
+            if len(alive)==0:
+                win='проиграли, как и ваш соперник'
             try:
                 bot.send_message(self.teams[ids]['player']['id'], 'Игра завершена! Вы '+win+'!')
             except:
