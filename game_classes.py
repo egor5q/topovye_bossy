@@ -7,6 +7,9 @@ from telebot import types
 from pymongo import MongoClient
 import unit_classes
 
+token = os.environ['TELEGRAM_TOKEN']
+bot = telebot.TeleBot(token)
+
 allgames=0
 games={}
 
