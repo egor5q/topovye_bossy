@@ -108,7 +108,7 @@ class Game:
             for unit in team['army']:
                 if team['army'][unit].dead==True:
                     dead+=1
-            if dead!=len(team):
+            if dead!=len(team['army']):
                 alive.append(team)
         if len(alive)<=1:
             self.endgame(alive)
