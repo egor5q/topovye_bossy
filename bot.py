@@ -58,8 +58,8 @@ def photo(m):
             
 @bot.message_handler(commands=['testfight'])
 def testfight(m):
-    player1=441399484
-    player2=22
+    player1=m.from_user.id
+    player2=None
     players=[player1, player2]
     addteams(players)
         
