@@ -27,9 +27,9 @@ class Game:
         self.started=True
         for ids in self.teams:
             user=self.teams[ids]['player']
-            if user.sendresult!=False and user.id!=None:
+            if user['sendresult']!=False and user['id']!=None:
                 msg=bot.send_message(user['id'], 'Здесь будут отображаться результаты текущего боя.')
-                user.message=msg
+                user['message']=msg
         self.turn()
         
     def createteams(self, teams):
@@ -51,7 +51,7 @@ class Game:
             users=[]
             for ids in self.teams:
                 user=self.teams[ids]['player']
-                if user.sendresult!=False and user.message!=None and user.id!=None:
+                if user['sendresult']!=False and user['message']!=None and user['id']!=None:
                     pass # medit(результаты хп)
                     enemys=''
                     allies=''
