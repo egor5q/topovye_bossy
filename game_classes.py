@@ -77,8 +77,10 @@ class Game:
                             else:
                                 emoj='🔵'
                                 allies+=emoj+'|'+unit.name+': ♥️'+str(hp)+'%\n'
-                    medit('Ситуация на поле боя:\n\nСоюзники:\n'+allies+'\nСоперники:\n'+enemys, user['message'].chat.id, user['message'].message_id)
-                            
+                    try:
+                        medit('Ситуация на поле боя:\n\nСоюзники:\n'+allies+'\nСоперники:\n'+enemys, user['message'].chat.id, user['message'].message_id)
+                    except:
+                        pass
                             
                         
         for ids in self.teams:
