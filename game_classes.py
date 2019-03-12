@@ -58,7 +58,7 @@ class Game:
             users=[]
             for ids in self.teams:
                 user=self.teams[ids]['player']
-                if user['sendresult']!=False and user['message']!=None and user['id']!=None:
+                if user['sendresults']!=False and user['message']!=None and user['id']!=None:
                     pass # medit(результаты хп)
                     enemys=''
                     allies=''
