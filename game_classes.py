@@ -25,28 +25,54 @@ class Game:
         
     def startgame(self):
         self.started=True
+        for ids in self.teams:
+            user=self.teams[ids]['player']
+            if user.sendresult!=False and user.id!=None:
+                msg=bot.send_message(user['id'], 'Здесь будут отображаться результаты текущего боя.')
+                user.message=msg
         self.turn()
         
-    def createteams(self, teams, users):
+    def createteams(self, teams):
         x=0
         for ids in teams:
             self.teams.update({x:ids})
-            for idss in self.teams[x]: 
-                self.teams[x][idss].teamid=x
+            for idss in self.teams[x]['army']: 
+                self.teams[x]['army'][idss].teamid=x
             x+=1
         for ids in self.teams:
-            for idss in self.teams[ids]:
-                unit=self.teams[ids][idss]
+            for idss in self.teams[ids]['army']:
+                unit=self.teams[ids]['army'][idss]
                 print('Участник ['+str(unit.teamid)+']'+unit.name)
-        self.users=users
+        
         
     def turn(self):
         self.second+=1
-        if self.second%5==0:
+        if self.second%4==0:
             users=[]
-            for ids in self.players:
-                if ids.sendresult!=False and ids.message!=None:
+            for ids in self.teams:
+                user=self.teams[ids]['player']
+                if user.sendresult!=False and user.message!=None and user.id!=None:
                     pass # medit(результаты хп)
+                    enemys=''
+                    allies=''
+                    for idss in self.teams:
+                        team=self.teams[ids]
+                        if team['player']['id']==user['id']:
+                            x='ally'
+                        else:
+                            x='enemy'
+                        for unit in team:
+                            hp=round((unit['hp']/unit['maxhp'])*100, 1)
+                            if x=='enemy':
+                                emoj='🔴'
+                                enemys+=emoj+'|'+unit.name+': ♥️'+str(hp)+'%\n'
+                            else:
+                                emoj='🔵'
+                                allies+=emoj+'|'+unit.name+': ♥️'+str(hp)+'%\n'
+                medit('Ситуация на поле боя:\n\n'+allies+'\n'+enemys, user.message.chat.id, user.message.message_id)
+                            
+                            
+                        
         for ids in self.teams:
             team=self.teams[ids]
             for unit in team:
