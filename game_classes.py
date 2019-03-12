@@ -117,7 +117,15 @@ class Game:
             t.start()
         
     def endgame(self, alive):
+        for ids in self.teams:
+            win='проиграли'
+            for idss in alive:
+                if alive[idss]['player']['id']==self.teams[ids]['player']['id']:
+                    win='выиграли'
+            try:
+                bot.send_message(self.teams[ids]['player']['id'], 'Игра завершена! Вы '+win+'!')
+            except:
+                pass
         del games[self.id]
-        bot.send_message(441399484, 'Игра завершена!')
             
         
