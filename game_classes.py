@@ -54,6 +54,26 @@ class Game:
         
     def turn(self):
         self.second+=1
+        
+        for ids in self.teams:
+            team=self.teams[ids]
+            for unit in team['army']:
+                team['army'][unit].shootcd-=1
+                
+        for ids in self.teams:
+            team=self.teams[ids]
+            for unit in team['army']:
+                if team['army'][unit].dead==False:
+                    if team['army'][unit].shootcd<=0:
+                        team['army'][unit].shoot(self.teams)
+                        team['army'][unit].shootcd=team['army'][unit].shootspeed[1]
+                    
+        for ids in self.teams:
+            team=self.teams[ids]
+            for unit in team['army']:
+                if team['army'][unit].hp<=0:
+                    team['army'][unit].dead=True
+                    
         if self.second%1==0:
             users=[]
             for ids in self.teams:
@@ -82,25 +102,7 @@ class Game:
                     except:
                         pass
                             
-                        
-        for ids in self.teams:
-            team=self.teams[ids]
-            for unit in team['army']:
-                team['army'][unit].shootcd-=1
-                
-        for ids in self.teams:
-            team=self.teams[ids]
-            for unit in team['army']:
-                if team['army'][unit].dead==False:
-                    if team['army'][unit].shootcd<=0:
-                        team['army'][unit].shoot(self.teams)
-                        team['army'][unit].shootcd=team['army'][unit].shootspeed[1]
-                    
-        for ids in self.teams:
-            team=self.teams[ids]
-            for unit in team['army']:
-                if team['army'][unit].hp<=0:
-                    team['army'][unit].dead=True
+
         alive=[]
         for ids in self.teams:
             team=self.teams[ids]
